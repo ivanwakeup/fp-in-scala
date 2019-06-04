@@ -1,6 +1,6 @@
 package exercises
 
-object Chapter1 extends App {
+object Chapter1 {
 
   //we can use reduceLeft to take a list of items, with some value we want to compare
   //perhaps to get the greatest value? and return that highest value
@@ -20,4 +20,8 @@ object Chapter1 extends App {
   //over the collection, comparing each pair p1 and p2 as you go and returning one of the two.
   val result = players.reduceLeft((p1, p2) => if(p1.score > p2.score) p1 else p2)
   println(result.score, result.name)
+
+  import data_types.TryPractice
+
+  val _ = new TryPractice()
 }
