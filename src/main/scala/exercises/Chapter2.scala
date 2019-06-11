@@ -4,7 +4,7 @@ import java.security.KeyStore.TrustedCertificateEntry
 
 import scala.annotation.tailrec
 
-object Chapter2 extends App {
+object Chapter2 {
 
 
   def factorial(num: Int): Int = {
@@ -79,7 +79,7 @@ object Chapter2 extends App {
   }
 
   val res = partial1[Int, Int, Int](1, (n1, n2) => n1+n2)
-  println(res(5))
+  //println(res(5))
 
   val adderFunction = (n1: Int, n2: Int) => n1 + n2
   val add5 = adderFunction(5, _)
@@ -106,6 +106,17 @@ object Chapter2 extends App {
     (a: A, b: B) => f(a)(b)
   }
 
+
+  def compose[A, B, C](f: B => C, g: A => B): A => C = {
+    (a: A) => f(g(a))
+  }
+
+  val add6 = (n1: Int) => 6 + n1
+  val mult2 = (n1: Int) => 2 * n1
+
+  val transform = add6 andThen mult2
+
+  println(transform(1))
 
 
 }
